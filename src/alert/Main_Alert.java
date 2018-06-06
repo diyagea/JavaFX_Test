@@ -48,9 +48,9 @@ public class Main_Alert extends Application {
 //    	exceptionDialog();
 //    	confirmDialog();
 //    	actionConfirmDialog();
-    	inputDialog();
+//    	inputDialog();
 //    	choiceDialog();
-//    	loginDialog();
+    	loginDialog();
     }
     
     void infoDialogWithHeader(){
