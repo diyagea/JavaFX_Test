@@ -41,7 +41,7 @@ public class Main_Alert extends Application {
     }
     @Override
     public void start(Stage primaryStage) {
-//    	infoDialogWithHeader();
+    	infoDialogWithHeader();
 //    	infoDialogWithOutHeader();
 //    	warningDialog();
 //    	errorDialog();
@@ -50,14 +50,14 @@ public class Main_Alert extends Application {
 //    	actionConfirmDialog();
 //    	inputDialog();
 //    	choiceDialog();
-    	loginDialog();
+//    	loginDialog();
     }
     
     void infoDialogWithHeader(){
     	 Alert alert = new Alert(AlertType.INFORMATION);
-         alert.setTitle("Information Dialog");
-         alert.setHeaderText("Look, an Information Dialog");
-         alert.setContentText("I have a great message for you!");
+         alert.setTitle("信息：Information Dialog");
+         alert.setHeaderText("信息：Look, an Information Dialog");
+         alert.setContentText("信息：I have a great message for you!");
 
          alert.showAndWait();
     }

@@ -35,26 +35,26 @@ public class TableController implements Initializable {
 	public ObservableList<Student> getStuData() {
 		selectSet = new HashSet<>();
 
-		Student stu1 = new Student("ÕÔ", "¹ş", 16);
-		Student stu2 = new Student("Ç®", "´ó", 26);
-		Student stu3 = new Student("Ëï", "°¢", 23);
-		Student stu4 = new Student("Àî", "·ğÉ½", 17);
-		Student stu5 = new Student("ÖÜ", "°¢ÈøµÂ", 23);
-		Student stu6 = new Student("Îâ", "¸üºÃ", 12);
-		Student stu7 = new Student("Ö£", "ºÍ", 28);
-		Student stu8 = new Student("Íõ", "·Ñ", 23);
-		Student stu9 = new Student("Áõ", "µÄ", 15);
-		Student stu10 = new Student("¹Ø", "Ê±ÊÇ", 23);
-		Student stu11 = new Student("ÕÅ", "Á¼ºÃ", 19);
-		Student stu12 = new Student("Öî¸ğ", "ÁĞ", 23);
-		Student stu13 = new Student("Ë¾Âí", "¿©ÅÜ", 20);
+		Student stu1 = new Student("èµµ", "å“ˆ", 16);
+		Student stu2 = new Student("é’±", "å¤§", 26);
+		Student stu3 = new Student("å­™", "é˜¿", 23);
+		Student stu4 = new Student("æ", "ä½›å±±", 17);
+		Student stu5 = new Student("å‘¨", "é˜¿è¨å¾·", 23);
+		Student stu6 = new Student("å´", "æ›´å¥½", 12);
+		Student stu7 = new Student("éƒ‘", "å’Œ", 28);
+		Student stu8 = new Student("ç‹", "è´¹", 23);
+		Student stu9 = new Student("åˆ˜", "çš„", 15);
+		Student stu10 = new Student("å…³", "æ—¶æ˜¯", 23);
+		Student stu11 = new Student("å¼ ", "è‰¯å¥½", 19);
+		Student stu12 = new Student("è¯¸è‘›", "åˆ—", 23);
+		Student stu13 = new Student("å¸é©¬", "å’¯è·‘", 20);
 
 		ObservableList<Student> stuLists = FXCollections.observableArrayList(stu1, stu2, stu3, stu4, stu5, stu6, stu7, stu8, stu9, stu10, stu11, stu12, stu13);
 		return stuLists;
 	}
 
 	/**
-	 * ÏÔÊ¾Ñ§Éú±í¸ñ
+	 * æ˜¾ç¤ºå­¦ç”Ÿè¡¨æ ¼
 	 * 
 	 * @param stuLists
 	 */
@@ -118,11 +118,11 @@ public class TableController implements Initializable {
 							String lastName = this.getTableView().getItems().get(this.getIndex()).getLastName();
 							int line = this.getIndex() + 1;
 							if (newVal) {
-								// Ìí¼ÓÑ¡ÖĞÊ±Ö´ĞĞµÄ´úÂë
-								System.out.println("µÚ" + line + "ĞĞ±»Ñ¡ÖĞ£¡");
+								// æ·»åŠ é€‰ä¸­æ—¶æ‰§è¡Œçš„ä»£ç 
+								System.out.println("ç¬¬" + line + "è¡Œè¢«é€‰ä¸­ï¼");
 								selectSet.add(firstName+lastName);
 							}else{
-								System.out.println("µÚ" + line + "ĞĞ±»È¡Ïû£¡");
+								System.out.println("ç¬¬" + line + "è¡Œè¢«å–æ¶ˆï¼");
 								selectSet.remove(firstName+lastName);
 								
 							}
@@ -146,12 +146,12 @@ public class TableController implements Initializable {
 
 					if (!empty) {
 						//ImageView delICON = new ImageView(getClass().getResource("delete.png").toString());
-//						Button delBtn = new Button("É¾³ı", delICON);
-						Button delBtn = new Button("É¾³ı");
+//						Button delBtn = new Button("åˆ é™¤", delICON);
+						Button delBtn = new Button("åˆ é™¤");
 						this.setGraphic(delBtn);
 						delBtn.setOnMouseClicked((me) -> {
 							Student clickedStu = this.getTableView().getItems().get(this.getIndex());
-							System.out.println("É¾³ı " + clickedStu.getFirstName() + clickedStu.getLastName() + " µÄ¼ÇÂ¼");
+							System.out.println("åˆ é™¤ " + clickedStu.getFirstName() + clickedStu.getLastName() + " çš„è®°å½•");
 						});
 					}
 				}
@@ -166,7 +166,7 @@ public class TableController implements Initializable {
 	@FXML
 	public void selectData(){
 		if(this.selectSet.size()==0){
-			System.out.println("Î´Ñ¡ÖĞÈÎºÎÊı¾İ£¡");
+			System.out.println("æœªé€‰ä¸­ä»»ä½•æ•°æ®ï¼");
 		}
 		for(String s : this.selectSet){
 			System.out.println(s);
@@ -177,7 +177,7 @@ public class TableController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		fxLabel.setWrapText(true);
-		fxLabel.setText("javafx_Label±êÇ©µÄ»»ĞĞ²âÊÔ£¬ÓÃÓÚµ¯³ö¿òµÄÌáÊ¾ĞÅÏ¢²âÊÔ£¬Label¿Ø¼şÒ²¿ÉÒÔ»»ĞĞ¡£");
+		fxLabel.setText("javafx_Labelæ ‡ç­¾çš„æ¢è¡Œæµ‹è¯•ï¼Œç”¨äºå¼¹å‡ºæ¡†çš„æç¤ºä¿¡æ¯æµ‹è¯•ï¼ŒLabelæ§ä»¶ä¹Ÿå¯ä»¥æ¢è¡Œã€‚");
 
 		this.showStuTable(this.getStuData());
 	}
