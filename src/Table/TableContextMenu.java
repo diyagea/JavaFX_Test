@@ -15,6 +15,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -72,9 +74,12 @@ public class TableContextMenu extends Application {
 
 		MenuItem menuItem1 = new MenuItem("new");
 		menuItem1.setId("new");
+		menuItem1.setGraphic(new ImageView(new Image(getClass().getResource("New.png").toString())));
 		MenuItem menuItem2 = new MenuItem("edit");
 		menuItem2.setId("edit");
+		menuItem2.setGraphic(new ImageView(new Image(getClass().getResource("Edit.png").toString())));
 		MenuItem menuItem3 = new MenuItem("save");
+		menuItem3.setGraphic(new ImageView(new Image(getClass().getResource("Save.png").toString())));
 		menuItem3.setId("save");
 
 		cm.getItems().addAll(menuItem1, menuItem2, menuItem3);
