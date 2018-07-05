@@ -1,4 +1,4 @@
-package TableEdit;
+package Table;
 
 import java.util.HashMap;
 import java.util.Map;
