@@ -1,4 +1,4 @@
-package mouseEvent;
+package event.mouseEvent;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

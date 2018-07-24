@@ -1,4 +1,4 @@
-package mouseEvent;
+package event.mouseEvent;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
