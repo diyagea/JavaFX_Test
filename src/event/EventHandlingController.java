@@ -7,11 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
 
 /**
@@ -47,6 +50,8 @@ public class EventHandlingController {
 	@FXML
 	private TextArea outputTextArea;
 	
+	@FXML
+	Label imageLabel;
 	
 	/**
 	 * The constructor (is called before the initialize()-method).
@@ -165,7 +170,23 @@ public class EventHandlingController {
 		myTextField.setOnAction((event) -> {
 			outputTextArea.appendText("TextField Action\n");
 		});
-		
+
+	}
+	
+	@FXML
+	public void clickImage(MouseEvent event){
+		System.out.println("Image Clicked!!!");
+		ImageView image = (ImageView) event.getSource();
+		String state = (String) imageLabel.getUserData();
+		if("OPEN".equals(state)){
+			imageLabel.setUserData("CLOSE");
+			image.getParent().setStyle("-fx-background-color : transparent");
+//			imageLabel.setStyle("-fx-background-color : transparent");
+		}else{
+			imageLabel.setUserData("OPEN");
+			image.getParent().setStyle("-fx-background-color : grey");
+//			imageLabel.setStyle("-fx-background-color : red");
+		}
 	}
 	
 }
