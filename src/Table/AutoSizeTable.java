@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
-public class MapDataTable extends Application {
+public class AutoSizeTable extends Application {
 
 	public static final String Column1MapKey = "A";
 	public static final String Column2MapKey = "B";

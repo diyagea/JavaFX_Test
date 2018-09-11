@@ -30,6 +30,7 @@ public class HelloDragAndDrop extends Application {
 		target.setScaleX(2.0);
 		target.setScaleY(2.0);
 
+		//源对象-检测托起触发
 		source.setOnDragDetected(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
 				/* drag was detected, start drag-and-drop gesture*/
@@ -47,6 +48,7 @@ public class HelloDragAndDrop extends Application {
 			}
 		});
 
+		//目标对象-悬浮正上方触发
 		target.setOnDragOver(new EventHandler<DragEvent>() {
 			public void handle(DragEvent event) {
 				/* data is dragged over the target */
@@ -63,6 +65,7 @@ public class HelloDragAndDrop extends Application {
 			}
 		});
 
+		//目标对象-拖拽手势进入目标区域
 		target.setOnDragEntered(new EventHandler<DragEvent>() {
 			public void handle(DragEvent event) {
 				/* the drag-and-drop gesture entered the target */
@@ -76,6 +79,7 @@ public class HelloDragAndDrop extends Application {
 			}
 		});
 
+		//目标对象-拖拽手势离开目标区域
 		target.setOnDragExited(new EventHandler<DragEvent>() {
 			public void handle(DragEvent event) {
 				/* mouse moved away, remove the graphical cues */
@@ -85,6 +89,7 @@ public class HelloDragAndDrop extends Application {
 			}
 		});
 
+		//目标对象-在目标区域释放
 		target.setOnDragDropped(new EventHandler<DragEvent>() {
 			public void handle(DragEvent event) {
 				/* data dropped */
@@ -104,6 +109,7 @@ public class HelloDragAndDrop extends Application {
 			}
 		});
 
+		//源对象-拖拽过程结束
 		source.setOnDragDone(new EventHandler<DragEvent>() {
 			public void handle(DragEvent event) {
 				/* the drag-and-drop gesture ended */
