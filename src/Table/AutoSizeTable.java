@@ -4,21 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -42,9 +40,6 @@ public class AutoSizeTable extends Application {
 		stage.setWidth(300);
 		stage.setHeight(500);
 
-		final Label label = new Label("Student IDs");
-		label.setFont(new Font("Arial", 20));
-
 		TableColumn<Map, String> Data1Column = new TableColumn<>("Class A");
 		TableColumn<Map, String> Data2Column = new TableColumn<>("Class B");
 		TableColumn<Map, String> Data3Column = new TableColumn<>("Class C");
@@ -60,10 +55,9 @@ public class AutoSizeTable extends Application {
 		Data4Column.setMinWidth(130);
 
 		TableView tableView = new TableView<>(generateDataInMap());
-		tableView.setPrefSize(200, 200);
-		tableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
-		tableView.setEditable(true);
-		tableView.getSelectionModel().setCellSelectionEnabled(true);
+		//tableView.setPrefSize(400, 400);
+//		tableView.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+//		tableView.getSelectionModel().setCellSelectionEnabled(true);
 		tableView.getColumns().setAll(Data1Column, Data2Column, Data3Column, Data4Column);
 		Callback<TableColumn<Map, String>, TableCell<Map, String>> cellFactoryForMap = (TableColumn<Map, String> p) -> new TextFieldTableCell(new StringConverter() {
 			@Override
@@ -81,29 +75,15 @@ public class AutoSizeTable extends Application {
 		Data3Column.setCellFactory(cellFactoryForMap);
 		Data4Column.setCellFactory(cellFactoryForMap);
 
-		final VBox vbox = new VBox();
+		VBox box = new VBox();
+		Tab tab = new Tab();
+		TabPane tabPane = new TabPane(tab);
+		StackPane pane = new StackPane();
+		pane.getChildren().addAll(tableView);
+		tab.setContent(pane);
 
-		vbox.setSpacing(5);
-		vbox.setPadding(new Insets(10, 0, 0, 10));
-		vbox.getChildren().addAll(label, tableView);
-		stage.widthProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> ov, Number t, Number t1) {
-				System.out.println("Window Width Change:" + t.toString() + "," + t1.toString());
-				tableView.setPrefWidth(t1.doubleValue() - 50);
-			}
-		});
-
-		stage.heightProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> ov, Number t, Number t1) {
-				System.out.println("Window Height Change:" + t.toString() + "," + t1.toString());
-				tableView.setPrefHeight(t1.doubleValue() - 150);
-			}
-		});
-
-		((Group) scene.getRoot()).getChildren().addAll(vbox);
-
+		box.getChildren().add(tabPane);
+		scene.setRoot(box);
 		stage.setScene(scene);
 
 		stage.show();
