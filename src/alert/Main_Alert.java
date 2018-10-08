@@ -1,6 +1,5 @@
 package alert;
 
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -31,260 +31,250 @@ import javafx.util.Pair;
 
 /**
  * stackedBarChart Show
+ * 
  * @author diyagea- Allen.Wang
  *
  */
 public class Main_Alert extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-    @Override
-    public void start(Stage primaryStage) {
-    	infoDialogWithHeader();
-//    	infoDialogWithOutHeader();
-//    	warningDialog();
-//    	errorDialog();
-//    	exceptionDialog();
-//    	confirmDialog();
-//    	actionConfirmDialog();
-//    	inputDialog();
-//    	choiceDialog();
-//    	loginDialog();
-    }
-    
-    void infoDialogWithHeader(){
-    	 Alert alert = new Alert(AlertType.INFORMATION);
-         alert.setTitle("信息：Information Dialog");
-         alert.setHeaderText("信息：Look, an Information Dialog");
-         alert.setContentText("信息：I have a great message for you!");
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-         alert.showAndWait();
-    }
-    
-    void infoDialogWithOutHeader(){
-    	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Information Dialog");
-    	alert.setHeaderText(null);
-    	alert.setContentText("I have a great message for you!");
+	@Override
+	public void start(Stage primaryStage) {
+		//    	infoDialogWithHeader();
+		//    	infoDialogWithOutHeader();
+		//    	warningDialog();
+		//    	errorDialog();
+		//    	exceptionDialog();
+		//    	confirmDialog();
+		//    	actionConfirmDialog();
+		//    	inputDialog();
+		//    	choiceDialog();
+		loginDialog();
+	}
 
-    	alert.showAndWait();
-    }
-    
-    void warningDialog(){
-    	Alert alert = new Alert(AlertType.WARNING);
-    	alert.setTitle("Warning Dialog");
-    	alert.setHeaderText("Look, a Warning Dialog");
-    	alert.setContentText("Careful with the next step!");
+	void infoDialogWithHeader() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("信息：Information Dialog");
+		alert.setHeaderText("信息：Look, an Information Dialog");
+		alert.setContentText("信息：I have a great message for you!");
 
-    	alert.showAndWait();
-    }
-    
-    void errorDialog(){
-    	Alert alert = new Alert(AlertType.ERROR);
-    	alert.setTitle("Error Dialog");
-    	alert.setHeaderText("Look, an Error Dialog");
-    	alert.setContentText("Ooops, there was an error!");
+		alert.showAndWait();
+	}
 
-    	alert.showAndWait();
-    }
-    
-    void exceptionDialog(){
-    	Alert alert = new Alert(AlertType.ERROR);
-    	alert.setTitle("Exception Dialog");
-    	alert.setHeaderText("Look, an Exception Dialog");
-    	alert.setContentText("Could not find file blabla.txt!");
+	void infoDialogWithOutHeader() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("I have a great message for you!");
 
-    	Exception ex = new FileNotFoundException("Could not find file blabla.txt");
+		alert.showAndWait();
+	}
 
-    	// Create expandable Exception.
-    	StringWriter sw = new StringWriter();
-    	PrintWriter pw = new PrintWriter(sw);
-    	ex.printStackTrace(pw);
-    	String exceptionText = sw.toString();
+	void warningDialog() {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Warning Dialog");
+		alert.setHeaderText("Look, a Warning Dialog");
+		alert.setContentText("Careful with the next step!");
 
-    	Label label = new Label("The exception stacktrace was:");
+		alert.showAndWait();
+	}
 
-    	TextArea textArea = new TextArea(exceptionText);
-    	textArea.setEditable(false);
-    	textArea.setWrapText(true);
+	void errorDialog() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error Dialog");
+		alert.setHeaderText("Look, an Error Dialog");
+		alert.setContentText("Ooops, there was an error!");
 
-    	textArea.setMaxWidth(Double.MAX_VALUE);
-    	textArea.setMaxHeight(Double.MAX_VALUE);
-    	GridPane.setVgrow(textArea, Priority.ALWAYS);
-    	GridPane.setHgrow(textArea, Priority.ALWAYS);
+		alert.showAndWait();
+	}
 
-    	GridPane expContent = new GridPane();
-    	expContent.setMaxWidth(Double.MAX_VALUE);
-    	expContent.add(label, 0, 0);
-    	expContent.add(textArea, 0, 1);
+	void exceptionDialog() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Exception Dialog");
+		alert.setHeaderText("Look, an Exception Dialog");
+		alert.setContentText("Could not find file blabla.txt!");
 
-    	// Set expandable Exception into the dialog pane.
-    	alert.getDialogPane().setExpandableContent(expContent);
+		Exception ex = new FileNotFoundException("Could not find file blabla.txt");
 
-    	alert.showAndWait();
-    }
-    
-    void confirmDialog(){
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmation Dialog");
-    	alert.setHeaderText("Look, a Confirmation Dialog");
-    	alert.setContentText("Are you ok with this?");
+		// Create expandable Exception.
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		ex.printStackTrace(pw);
+		String exceptionText = sw.toString();
 
-    	Optional<ButtonType> result = alert.showAndWait();
-    	if (result.get() == ButtonType.OK){
-    	    // ... user chose OK
-    		System.out.println("Confirm");
-    	} else {
-    	    // ... user chose CANCEL or closed the dialog
-    		System.out.println("CANCEL");
-    	}
-    }
-    
-    void actionConfirmDialog(){
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmation Dialog with Custom Actions");
-    	alert.setHeaderText("Look, a Confirmation Dialog with Custom Actions");
-    	alert.setContentText("Choose your option.");
+		Label label = new Label("The exception stacktrace was:");
 
-    	ButtonType buttonTypeOne = new ButtonType("One");
-    	ButtonType buttonTypeTwo = new ButtonType("Two");
-    	ButtonType buttonTypeThree = new ButtonType("Three");
-    	ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		TextArea textArea = new TextArea(exceptionText);
+		textArea.setEditable(false);
+		textArea.setWrapText(true);
 
-    	alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
+		textArea.setMaxWidth(Double.MAX_VALUE);
+		textArea.setMaxHeight(Double.MAX_VALUE);
+		GridPane.setVgrow(textArea, Priority.ALWAYS);
+		GridPane.setHgrow(textArea, Priority.ALWAYS);
 
-    	Optional<ButtonType> result = alert.showAndWait();
-    	if (result.get() == buttonTypeOne){
-    	    // ... user chose "One"
-    		System.out.println("One");
-    	} else if (result.get() == buttonTypeTwo) {
-    	    // ... user chose "Two"
-    		System.out.println("Two");
-    	} else if (result.get() == buttonTypeThree) {
-    	    // ... user chose "Three"
-    		System.out.println("Three");
-    	} else {
-    	    // ... user chose CANCEL or closed the dialog
-    		System.out.println("CANCEL or closed");
-    	}
-    }
-    
-    void inputDialog(){
-    	TextInputDialog dialog = new TextInputDialog("walter");
-    	dialog.setTitle("Text Input Dialog");
-    	dialog.setHeaderText("Look, a Text Input Dialog");
-    	dialog.setContentText("Please enter your name:");
+		GridPane expContent = new GridPane();
+		expContent.setMaxWidth(Double.MAX_VALUE);
+		expContent.add(label, 0, 0);
+		expContent.add(textArea, 0, 1);
 
-    	// Traditional way to get the response value.
-    	Optional<String> result = dialog.showAndWait();
-    	if (result.isPresent()){
-    	    System.out.println("Your name: " + result.get());
-    	}
+		// Set expandable Exception into the dialog pane.
+		alert.getDialogPane().setExpandableContent(expContent);
 
-    	// The Java 8 way to get the response value (with lambda expression).
-    	result.ifPresent(name -> System.out.println("Your name: " + name));
-    }
-    
-    void choiceDialog(){
-    	List<String> choices = new ArrayList<>();
-    	choices.add("a");
-    	choices.add("b");
-    	choices.add("c");
+		alert.showAndWait();
+	}
 
-    	ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
-    	dialog.setTitle("Choice Dialog");
-    	dialog.setHeaderText("Look, a Choice Dialog");
-    	dialog.setContentText("Choose your letter:");
+	void confirmDialog() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Look, a Confirmation Dialog");
+		alert.setContentText("Are you ok with this?");
 
-    	// Traditional way to get the response value.
-    	Optional<String> result = dialog.showAndWait();
-    	if (result.isPresent()){
-    	    System.out.println("Your choice: " + result.get());
-    	}
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			// ... user chose OK
+			System.out.println("Confirm");
+		} else {
+			// ... user chose CANCEL or closed the dialog
+			System.out.println("CANCEL");
+		}
+	}
 
-    	// The Java 8 way to get the response value (with lambda expression).
-    	result.ifPresent(letter -> System.out.println("Your choice: " + letter));
-    }
-    
-    void loginDialog(){
-    	// Create the custom dialog.
-    	Dialog<Pair<String, String>> dialog = new Dialog<>();
-    	dialog.setTitle("Login Dialog");
-    	dialog.setHeaderText("Look, a Custom Login Dialog");
+	void actionConfirmDialog() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog with Custom Actions");
+		alert.setHeaderText("Look, a Confirmation Dialog with Custom Actions");
+		alert.setContentText("Choose your option.");
 
-    	// Set the icon (must be included in the project).
-    	//dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
+		ButtonType buttonTypeOne = new ButtonType("One");
+		ButtonType buttonTypeTwo = new ButtonType("Two");
+		ButtonType buttonTypeThree = new ButtonType("Three");
+		ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 
-    	// Set the button types.
-    	ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
-    	dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+		alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
 
-    	// Create the username and password labels and fields.
-    	GridPane grid = new GridPane();
-    	grid.setHgap(10);
-    	grid.setVgap(10);
-    	grid.setPadding(new Insets(20, 150, 10, 10));
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == buttonTypeOne) {
+			// ... user chose "One"
+			System.out.println("One");
+		} else if (result.get() == buttonTypeTwo) {
+			// ... user chose "Two"
+			System.out.println("Two");
+		} else if (result.get() == buttonTypeThree) {
+			// ... user chose "Three"
+			System.out.println("Three");
+		} else {
+			// ... user chose CANCEL or closed the dialog
+			System.out.println("CANCEL or closed");
+		}
+	}
 
-    	TextField username = new TextField();
-    	username.setPromptText("Username");
-    	PasswordField password = new PasswordField();
-    	password.setPromptText("Password");
+	void inputDialog() {
+		TextInputDialog dialog = new TextInputDialog("walter");
+		dialog.setTitle("Text Input Dialog");
+		dialog.setHeaderText("Look, a Text Input Dialog");
+		dialog.setContentText("Please enter your name:");
 
-    	grid.add(new Label("Username:"), 0, 0);
-    	grid.add(username, 1, 0);
-    	grid.add(new Label("Password:"), 0, 1);
-    	grid.add(password, 1, 1);
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			System.out.println("Your name: " + result.get());
+		}
 
-    	// Enable/Disable login button depending on whether a username was entered.
-    	Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
-    	loginButton.setDisable(true);
+		// The Java 8 way to get the response value (with lambda expression).
+		result.ifPresent(name -> System.out.println("Your name: " + name));
+	}
 
-    	// Do some validation (using the Java 8 lambda syntax).
-    	username.textProperty().addListener((observable, oldValue, newValue) -> {
-    	    loginButton.setDisable(newValue.trim().isEmpty());
-    	});
+	void choiceDialog() {
+		List<String> choices = new ArrayList<>();
+		choices.add("a");
+		choices.add("b");
+		choices.add("c");
 
-    	dialog.getDialogPane().setContent(grid);
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
+		dialog.setTitle("Choice Dialog");
+		dialog.setHeaderText("Look, a Choice Dialog");
+		dialog.setContentText("Choose your letter:");
 
-    	// Request focus on the username field by default.
-    	Platform.runLater(() -> username.requestFocus());
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			System.out.println("Your choice: " + result.get());
+		}
 
-    	// Convert the result to a username-password-pair when the login button is clicked.
-    	dialog.setResultConverter(dialogButton -> {
-    	    if (dialogButton == loginButtonType) {
-    	        return new Pair<>(username.getText(), password.getText());
-    	    }
-    	    return null;
-    	});
+		// The Java 8 way to get the response value (with lambda expression).
+		result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+	}
 
-    	Optional<Pair<String, String>> result = dialog.showAndWait();
+	void loginDialog() {
+		// Create the custom dialog.
+		Dialog<Pair<String, String>> dialog = new Dialog<>();
+		dialog.setTitle("Login Dialog");
+		dialog.setHeaderText("Look, a Custom Login Dialog");
+		Image i = new Image("file:src/alert/5.png");
+		ImageView iv = new ImageView(i);
+		iv.setFitWidth(50);
+		iv.setFitHeight(50);
+		dialog.setGraphic(iv);
 
-    	result.ifPresent(usernamePassword -> {
-    	    System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
-    	});
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+		// Get the Stage.
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		// Add a custom icon.
+		stage.getIcons().add(i);
+
+		// Set the icon (must be included in the project).
+		//dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
+
+		// Set the button types.
+		ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
+		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+		// Create the username and password labels and fields.
+		GridPane grid = new GridPane();
+		grid.setHgap(10);
+		grid.setVgap(10);
+		grid.setPadding(new Insets(20, 150, 10, 10));
+
+		TextField username = new TextField();
+		username.setPromptText("Username");
+		PasswordField password = new PasswordField();
+		password.setPromptText("Password");
+
+		grid.add(new Label("Username:"), 0, 0);
+		grid.add(username, 1, 0);
+		grid.add(new Label("Password:"), 0, 1);
+		grid.add(password, 1, 1);
+
+		// Enable/Disable login button depending on whether a username was entered.
+		Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+		loginButton.setDisable(true);
+
+		// Do some validation (using the Java 8 lambda syntax).
+		username.textProperty().addListener((observable, oldValue, newValue) -> {
+			loginButton.setDisable(newValue.trim().isEmpty());
+		});
+
+		dialog.getDialogPane().setContent(grid);
+
+		// Request focus on the username field by default.
+		Platform.runLater(() -> username.requestFocus());
+
+		// Convert the result to a username-password-pair when the login button is clicked.
+		dialog.setResultConverter(dialogButton -> {
+			if (dialogButton == loginButtonType) {
+				return new Pair<>(username.getText(), password.getText());
+			}
+			return null;
+		});
+
+		Optional<Pair<String, String>> result = dialog.showAndWait();
+
+		result.ifPresent(usernamePassword -> {
+			System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
+		});
+	}
+
 }
