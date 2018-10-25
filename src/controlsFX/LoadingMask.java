@@ -3,6 +3,7 @@ package controlsFX;
 import org.controlsfx.control.MaskerPane;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LoadingMask extends Application {
-	MaskerPane mask = new MaskerPane();
+	MaskerPane masker = new MaskerPane();
 
 	public static void main(String[] args) {
 		launch(args);
@@ -20,25 +21,39 @@ public class LoadingMask extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		VBox vbox = new VBox();
+		masker.setVisible(false);
 		Button btn = new Button("Show/hide");
 		StackPane pane = new StackPane();
 		pane.setPrefWidth(400);
 		pane.setPrefHeight(400);
-		pane.getChildren().addAll(mask);
+		pane.getChildren().add(btn);
+		pane.getChildren().add(masker);
 
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				if (mask.isVisible()) {
-					mask.setVisible(false);
-				} else {
-					mask.setVisible(true);
-				}
+				//Not-JavaFX-Thread-Exception
+				new Thread() {
+					@Override
+					public synchronized void run() {
+						masker.setVisible(true);
+						System.out.println("start");
+						boolean flag = true;
+						int i = 0;
+						while (flag) {
+							i++;
+							if (i == 100000) {
+								flag = false;
+							}
+							System.out.println(i);
+						}
+						System.out.println("end");
+						masker.setVisible(false);
+					}
+				}.start();
 			}
 		});
-		
-		vbox.getChildren().addAll(btn, pane);
-		Scene scene = new Scene(vbox, 500, 500);
+
+		Scene scene = new Scene(pane, 500, 500);
 		primaryStage.setScene(scene);
 		primaryStage.sizeToScene();
 		primaryStage.show();

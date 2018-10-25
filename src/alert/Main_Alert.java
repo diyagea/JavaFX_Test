@@ -49,10 +49,10 @@ public class Main_Alert extends Application {
 		//    	errorDialog();
 		//    	exceptionDialog();
 		//    	confirmDialog();
-		//    	actionConfirmDialog();
+//		    	actionConfirmDialog();
 		//    	inputDialog();
-		//    	choiceDialog();
-		loginDialog();
+		    	choiceDialog();
+		//		loginDialog();
 	}
 
 	void infoDialogWithHeader() {
@@ -153,7 +153,6 @@ public class Main_Alert extends Application {
 		ButtonType buttonTypeTwo = new ButtonType("Two");
 		ButtonType buttonTypeThree = new ButtonType("Three");
 		ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-
 		alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeCancel);
 
 		Optional<ButtonType> result = alert.showAndWait();
