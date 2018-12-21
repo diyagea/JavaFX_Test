@@ -6,8 +6,8 @@
  */
 .root {
   -dark                        : #27292D;
-  -standard                    : #913B3B;
-  -bright                      : #DF5B5B;
+  -standard                    : #A0522D; /*#913B3B */
+  -bright                      : #ffa500; /*#DF5B5B */
   -text-color                  : #FFFEFE;
   -highlight-effect            : dropshadow(two-pass-box, rgba(255, 255, 255, 1.0), 20, 0.5, 0, 0);
   -fx-background               : #34383B;

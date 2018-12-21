@@ -1,4 +1,4 @@
-package theme;
+package theme.themeChange;
 
 import javafx.application.Application;
 import javafx.application.Platform;

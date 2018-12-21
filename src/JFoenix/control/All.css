@@ -1,0 +1,93 @@
+.root {
+	-fx-accent: #ffa500;
+	-fx-background-color: transparent;
+	-fx-focus-color: #ffa500;
+	-fx-faint-focus-color: transparent;
+}
+
+.rippler-base {
+	-jfx-rippler-fill: green;
+	-jfx-rippler-radius: 100.0;
+	-jfx-mask-type: RECT; /* CIRCLE | RECT */
+}
+
+.button-raised {
+	-fx-padding: 0.7em 0.57em;
+	-fx-font-size: 14.0px;
+	-jfx-button-type: RAISED; /* FLAT (default) | RAISED */
+	-fx-background-color: #ffa500;
+	-fx-pref-width: 200.0;
+	-fx-text-fill: WHITE;
+}
+
+.custom-CheckBox {
+	-jfx-checked-color: #ffa500;
+	-jfx-unchecked-color: BLACK;
+}
+
+.custom-ComboBox {
+	-jfx-focus-color: #ffa500;
+	-jfx-unfocus-color: BLACK;
+	-jfx-label-float: false;
+	-fx-accent: #ffa500;
+}
+
+.jfx-hamburger-icon{
+	-fx-spacing: 5.0;
+	-fx-cursor: hand;
+}
+
+.jfx-text-field, .jfx-password-field, .jfx-text-area{
+	-jfx-focus-color: #ffa500;
+	-jfx-unfocus-color: BLACK;
+	-jfx-label-float: true;
+	-jfx-disable-animation: false;
+}
+
+.jfx-radio-button{
+	-jfx-selected-color: #ffa500;
+	-jfx-unselected-color: BLACK;
+}
+
+.jfx-toggle-button, .jfx-toggle-node{
+	-jfx-toggle-color: #ffa500;
+}
+
+.mylistview{
+	-fx-accent: #ffa500;
+	-fx-focus-color: #ffa500;
+	-fx-faint-focus-color: transparent;
+}
+.mylistview .scroll-bar:horizontal .track,
+.mylistview .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+ 
+.mylistview .scroll-bar:horizontal .increment-button ,
+.mylistview .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+}
+ 
+.mylistview .scroll-bar:vertical .increment-button ,
+.mylistview .scroll-bar:vertical .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+}
+.mylistview  .scroll-bar .increment-arrow,
+.mylistview  .scroll-bar .decrement-arrow{
+    -fx-shape:" ";
+    -fx-padding:0;
+}
+ 
+.mylistview .scroll-bar:horizontal .thumb,
+.mylistview .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
