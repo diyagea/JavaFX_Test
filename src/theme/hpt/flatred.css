@@ -1,0 +1,345 @@
+/**
+ * Author : Allen Wang
+ */
+ 
+/* Define color */
+*{
+	-color-base					: #FFA500;
+	-color-disable				: #C0C0C0;
+	-color-backgroud 			: #34383B;
+	-color-text					: #FFFEFE;
+	
+	-color-primary				: #A0522D;
+	-color-blue					: #01AAED;
+	-color-green				: #5FB878;
+	-color-yellow				: #FFD700;
+	-color-red					: #FF5722;
+	-color-cyan					: #2F4056;
+	-color-dark					: #27292D;
+
+   	-highlight-effect           : dropshadow(two-pass-box, rgba(255.0, 255.0, 255.0, 1.0), 20.0, 0.5, 0.0, 0.0);
+}
+
+/* Root Base Css Setting */
+.root {
+	-fx-base					: -color-base;
+	-fx-accent					: -color-base;
+	-fx-focus-color				: -color-base;
+	-fx-faint-focus-color		: transparent;
+  	-fx-background              : -color-backgroud;
+
+  	-fx-font-family				: "Roboto Light";
+  	-fx-font-size				: 16.0px;
+  	-fx-font-weight				: lighter;
+  	-fx-selection-bar			: -color-primary;
+  	-fx-selection-bar-non-focused	: derive(-color-primary, 20.0%);
+}
+
+/* ToolBar */
+.tool-bar{
+	-fx-spacing: 10;
+	-fx-background-color: linear-gradient(to bottom, derive(-color-base, 30%) 0.0%, derive(-color-base, -25%) 100.0%);
+}
+
+/* Button */ 
+.button{
+  	-fx-cursor: hand;
+ 	-fx-body-color : -color-base;
+  	-fx-text-fill : -color-text;
+  	-fx-outer-border : linear-gradient(to bottom, derive(-color-primary, 30.0%) 0.0%, derive(-color-primary, -30.0%) 100.0%);
+  	-fx-inner-border : derive(-color-base, 10.0%);
+  	-fx-border-color : transparent;
+  	-fx-border-radius : 0;
+  	-fx-focus-traversable : false;
+  	-fx-background-insets : 0;
+  	-fx-background-radius : 5 5;
+  	-fx-padding : 10.0 15.0 10.0 15.0;
+  	-fx-effect : dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 2.0, 0.0, 3, 3);
+}
+.button:pressed {
+  	-fx-body-color  : derive(-color-primary, 10.0%);
+  	-fx-inner-border: derive(-color-primary, 10.0%);
+}
+.button:hover {
+  	-fx-body-color: derive(-color-base, -20.0%);
+}
+.button:disabled {
+  	-fx-body-color : -color-disable;
+}
+.button .text {
+  	-fx-effect: dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.2), 1.0, 0.0, 0.0, 1.0);
+}
+
+/* Toggle Button */
+.toggle-button{
+	-fx-cursor : hand;
+	-fx-background-radius : 5 5;
+	-fx-body-color : -color-base;
+	-fx-text-fill : -color-text;
+  	-fx-outer-border : linear-gradient(to bottom, derive(-color-primary, 30.0%) 0.0%, derive(-color-primary, -30.0%) 100.0%);
+  	-fx-inner-border : derive(-color-base, 10.0%);
+  	-fx-border-color : transparent;
+  	-fx-border-radius : 0;
+  	-fx-background-insets: 0;
+  	-fx-padding : 10.0 15.0 10.0 15.0;
+  	-fx-effect : dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 2.0, 0.0, 3, 3);
+}
+.toggle-button:hover {
+	-fx-body-color  : derive(-color-base, -20.0%);
+}
+.toggle-button:pressed {
+  -fx-body-color  : -color-primary;
+  -fx-inner-border: derive(-color-primary, 10.0%);
+}
+.toggle-button:selected {
+  -fx-body-color      : -color-primary;
+  -fx-inner-border    : derive(-color-primary, 10.0%);
+  -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+}
+
+/* Radio Button */
+.radio-button{
+	-fx-cursor: hand ;
+	-fx-text-fill : -color-text;
+}
+.radio-button:hover{
+	-fx-text-fill : -color-base;
+	-fx-body-color  : derive(-color-base, -20.0%);
+}
+.radio-button .radio {
+  -fx-background-radius: 1.0em;
+  -fx-background-color : -color-base, -fx-background;
+  -fx-background-insets: 0.0, 2.0;
+  -fx-pref-width       : 21.0;
+  -fx-pref-height      : 21.0;
+}
+.radio-button:selected .radio .dot {
+  -fx-background-color : -color-base;
+  -fx-background-insets: 0.0;
+  -fx-padding          : 0.4em;
+}
+
+/* Check Box */
+.check-box{
+	-fx-cursor: hand ;
+	-fx-text-fill : -color-text;
+}
+.check-box:hover{
+	-fx-text-fill : -color-base;
+	-fx-body-color  : derive(-color-base, -20.0%);
+}
+.check-box > .box {
+  -fx-background-radius: 0.0;
+  -fx-background-color : -color-base, -fx-background;
+  -fx-background-insets: 0.0, 2.0;
+  -fx-pref-width       : 21.0;
+  -fx-pref-height      : 21.0;
+}
+.check-box:focused > .box {
+  -fx-background-insets: 0.0, 2.0;
+}
+.check-box > .box > .mark {
+  -fx-mark-highlight-color: -color-base;
+  -fx-mark-color          : -color-base;
+  -fx-scale-shape         : false;
+  -fx-shape               : "M 4.023 10.8633 L 4.0259 10.9843 L 11.9863 2.9926 L 10.1048 -0.014 L 4.0049 7.9774 L 1.3589 5.9741 L -0.0884 8.0153 L 4.023 10.8633 Z";
+  -fx-pref-width          : 12.0px;
+  -fx-pref-height         : 11.0px;
+}
+.check-box:selected .mark {
+  -fx-background-color: -color-base;
+}
+
+/* ToggleSwitch */
+.toggle-switch{
+	-fx-cursor: hand ;
+	-fx-text-fill : -color-text;
+}
+.toggle-switch:selected .thumb-area{
+    -fx-background-color: -color-base;
+    -fx-background-insets: 0.0, 1.0;
+}
+
+/* Scroll Bar */
+.scroll-bar:horizontal {
+  -fx-background-color : -color-base;
+  -fx-background-radius: 0.0;
+  -fx-padding          : 0.0;
+  -fx-background-insets: 0.0;
+}
+.scroll-bar:horizontal .thumb {
+  -fx-background-color: white;
+  -fx-scale-shape     : false;
+  -fx-shape           : "M 935 1187 L 943 1187 L 943 1188 L 935 1188 L 935 1187 ZM 935 1185 L 943 1185 L 943 1186 L 935 1186 L 935 1185 ZM 935 1183 L 943 1183 L 943 1184 L 935 1184 L 935 1183 ZM 926 1185.5 C 926 1192.9559 932.0441 1199 939.5 1199 C 946.9559 1199 953 1192.9559 953 1185.5 C 953 1178.0441 946.9559 1172 939.5 1172 C 932.0441 1172 926 1178.0441 926 1185.5 Z";
+  -fx-effect          : dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 1.0, 0.0, 0.0, 1.0);
+}
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+  -fx-background-color: white;
+  -fx-padding         : 0.333em 0.167em 0.333em 0.167em;
+  -fx-shape           : "M5.997,5.072L5.995,6.501l-2.998-4l2.998-4l0.002,1.43l-1.976,2.57L5.997,5.072z";
+  -fx-effect          : dropshadow(two-pass-box , -fx-shadow-highlight-color, 1.0, 0.0 , 0.0, 1.4);
+}
+.scroll-bar:horizontal > .increment-button > .increment-arrow {
+  -fx-background-color: white;
+  -fx-padding         : 0.333em 0.167em 0.333em 0.167em;
+  -fx-shape           : "M2.998-0.07L3-1.499l2.998,4L3,6.501l-0.002-1.43l1.976-2.57L2.998-0.07z";
+  -fx-effect          : dropshadow(two-pass-box , -fx-shadow-highlight-color, 1.0, 0.0 , 0.0, 1.4);
+}
+.scroll-bar:vertical {
+  -fx-background-color : -color-base;
+  -fx-background-radius: 0.0;
+  -fx-padding          : 0.0;
+  -fx-background-insets: 0.0;
+}
+.scroll-bar:vertical .thumb {
+  -fx-background-color: white;
+  -fx-scale-shape     : false;
+  -fx-shape           : "M 935 1187 L 943 1187 L 943 1188 L 935 1188 L 935 1187 ZM 935 1185 L 943 1185 L 943 1186 L 935 1186 L 935 1185 ZM 935 1183 L 943 1183 L 943 1184 L 935 1184 L 935 1183 ZM 926 1185.5 C 926 1192.9559 932.0441 1199 939.5 1199 C 946.9559 1199 953 1192.9559 953 1185.5 C 953 1178.0441 946.9559 1172 939.5 1172 C 932.0441 1172 926 1178.0441 926 1185.5 Z";
+  -fx-effect          : dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 1.0, 0.0, 0.0, 1.0);
+}
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+  -fx-background-color: white;
+  -fx-padding         : 0.167em 0.333em 0.167em 0.333em;
+  -fx-shape           : "M1.929,4L0.5,3.998L4.5,1l4,2.998L7.07,4L4.5,2.024L1.929,4z";
+  -fx-effect          : dropshadow(two-pass-box , -fx-shadow-highlight-color, 1.0, 0.0 , 0.0, 1.4);
+}
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+  -fx-background-color: white;
+  -fx-padding         : 0.167em 0.333em 0.167em 0.333em;
+  -fx-shape           : "M7.071,1L8.5,1.002L4.5,4l-4-2.998L1.93,1L4.5,2.976L7.071,1z";
+  -fx-effect          : dropshadow(two-pass-box , -fx-shadow-highlight-color, 1.0, 0.0 , 0.0, 1.4);
+}
+
+.scroll-bar > .track {
+  -fx-background-insets: 0.0;
+  -fx-padding          : 1.0em;
+}
+.scroll-bar > .increment-button:hover > .increment-arrow,
+.scroll-bar > .decrement-button:hover > .decrement-arrow {
+  -fx-background-color: -color-base;
+}
+.scroll-bar > .increment-button:pressed > .increment-arrow,
+.scroll-bar > .decrement-button:pressed > .decrement-arrow {
+  -fx-background-color: -color-base;
+}
+.scroll-bar .thumb:pressed {
+  -fx-effect: -highlight-effect;
+}
+
+/* Slider */
+.slider .track {
+  -fx-background-color : -color-base;
+  -fx-background-radius: 1.0em;
+  -fx-padding          : 0.8em;
+}
+.slider .thumb {
+  -fx-background-color: white;
+  -fx-scale-shape     : false;
+  -fx-shape           : "M 935 1187 L 943 1187 L 943 1188 L 935 1188 L 935 1187 ZM 935 1185 L 943 1185 L 943 1186 L 935 1186 L 935 1185 ZM 935 1183 L 943 1183 L 943 1184 L 935 1184 L 935 1183 ZM 926 1185.5 C 926 1192.9559 932.0441 1199 939.5 1199 C 946.9559 1199 953 1192.9559 953 1185.5 C 953 1178.0441 946.9559 1172 939.5 1172 C 932.0441 1172 926 1178.0441 926 1185.5 Z";
+  -fx-effect          : dropshadow(two-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 1.0, 0.0, 0.0, 1.0);
+}
+.slider .thumb:pressed {
+  -fx-effect: -highlight-effect;
+}
+
+/* Menu Bar */
+.menu-bar {
+  -fx-background-color: -color-primary, -color-base;
+}
+.menu-bar .menu:selected {
+  -fx-background      : -color-base;
+  -fx-background-color: -color-primary;
+  -fx-text-fill       : -color-text;
+}
+.menu-bar .menu-item {
+  -fx-text-fill: -color-text;
+}
+.menu:pressed {
+  -fx-background      : -color-primary;
+  -fx-background-color: -color-primary;
+  -fx-text-fill       : -color-text;
+}
+.menu:hover > .label {
+  -fx-background-color: -color-primary;
+}
+.menu .menu-button {
+  -fx-background      : -color-primary;
+  -fx-background-color: -color-primary;
+}
+.context-menu {
+  -fx-background-color: -color-base;
+}
+
+/* Title pane */
+.titled-pane {
+  -fx-mark-color          : -color-primary;
+  -fx-mark-highlight-color: transparent;
+  -fx-text-fill           : -color-text;
+}
+.titled-pane:focused > .title > .arrow-button > .arrow {
+  -fx-mark-color : white;
+  -fx-focus-color: transparent;
+}
+.titled-pane > .title {
+  -fx-background-color : -color-primary, -color-base;
+  -fx-background-insets: 0.0, 1.0 0.0 0.0 0.0;
+}
+.titled-pane >.title:hover {
+  -fx-background-color: -color-primary, derive(-color-base, -10.0%);
+}
+
+/* Progress Bar */
+.progress-bar .track {
+  -fx-background-color : -color-base;
+  -fx-background-insets: 0.0;
+  -fx-background-radius: 0.0;
+  -fx-padding          : 0.8em;
+}
+.progress-bar .bar {
+  -fx-background-insets: 0.0;
+  -fx-background-radius: 0.0;
+  -fx-box-border       : -color-base;
+  -fx-accent           : -color-primary;
+}
+.progress-indicator {
+  -fx-progress-color  : -color-primary;
+}
+.progress-indicator > .determinate-indicator > .indicator {
+  -fx-background-color : -color-base;
+  -fx-background-insets: 0.0, 1.0, 5.0 2.0 1.0 2.0;
+  -fx-padding          : 0.0;
+}
+.progress-indicator .percentage {
+  -fx-fill: rgb(255.0, 255.0, 255.0);
+}
+
+/* Borders */
+.borders{
+  -fx-border-color : rgba(255.0, 255.0, 255.0, 0.8);
+  -fx-border-style : dotted;
+  -fx-border-width : 0;
+  -fx-border-insets: -2.0;
+}
+
+/* Tab Pane */
+.tab-pane .tab .tab-label {
+	-fx-text-fill	:	-color-text;
+}
+.tab-pane .tab  {
+	-fx-padding : 5;
+	-fx-background-color: derive(-color-primary, -10%);
+	-fx-background-radius : 10 10 0 0;
+	-fx-border-color : transparent;
+}
+
+.tab-pane .tab:selected {
+	-fx-background-color: -color-base;
+}
+
+
+
+
+
+
+
+
