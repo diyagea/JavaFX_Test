@@ -9,7 +9,5 @@
 	<classpathentry kind="lib" path="lib/jfoenix.jar"/>
 	<classpathentry kind="lib" path="lib/controlsfx-8.40.13.jar"/>
 	<classpathentry kind="lib" path="lib/fontawesomefx-8.5.jar"/>
-	<classpathentry kind="lib" path="D:/DEV/code-ref/jars/JavaFX/jmetro-5.0.0.jar"/>
-	<classpathentry kind="lib" path="D:/DEV/code-ref/jars/JavaFX/fontawesomefx-8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
