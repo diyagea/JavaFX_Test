@@ -1,5 +1,6 @@
 package Table.ImageColumn;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.ImageView;
 
 public class CustomImage {
@@ -17,4 +18,9 @@ public class CustomImage {
 	public ImageView getImage() {
 		return image;
 	}
+	
+	public SimpleObjectProperty<ImageView> imageProperty(){
+		return new SimpleObjectProperty<ImageView>(image);
+	}
+	
 }

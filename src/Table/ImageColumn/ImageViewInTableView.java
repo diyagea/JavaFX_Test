@@ -33,7 +33,8 @@ public class ImageViewInTableView extends Application {
 
 		/* initialize and specify table column */
 		TableColumn<CustomImage, ImageView> firstColumn = new TableColumn<CustomImage, ImageView>("Images");
-		firstColumn.setCellValueFactory(new PropertyValueFactory<CustomImage, ImageView>("image"));
+		//firstColumn.setCellValueFactory(new PropertyValueFactory<CustomImage, ImageView>("image"));
+		firstColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());
 		firstColumn.setPrefWidth(60);
 
 		/* add column to the tableview and set its items */

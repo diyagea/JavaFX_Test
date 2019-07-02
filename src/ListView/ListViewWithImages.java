@@ -34,10 +34,15 @@ public class ListViewWithImages extends Application {
 			@Override
 			public void updateItem(String name, boolean empty) {
 				super.updateItem(name, empty);
+
 				if (empty) {
 					setText(null);
 					setGraphic(null);
 				} else {
+					//set Image Size
+					imageView.setFitHeight(50);
+					imageView.setFitWidth(50);
+
 					if (name.equals("RUBY"))
 						imageView.setImage(listOfImages[0]);
 					else if (name.equals("APPLE"))
@@ -46,7 +51,7 @@ public class ListViewWithImages extends Application {
 						imageView.setImage(listOfImages[2]);
 					else if (name.equals("TWITTER"))
 						imageView.setImage(listOfImages[3]);
-					setText(name+"\n ALLENTEST");
+					setText(name + "\nALLENTEST");
 					setGraphic(imageView);
 				}
 			}
