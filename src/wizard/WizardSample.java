@@ -27,10 +27,10 @@ public class WizardSample extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		//		showLinearWizard();
-		//		showBranchingWizard();
-		//		showValidatedLinearWizard();
-		showTestWizard();
+		//				showLinearWizard();
+		showBranchingWizard();
+		//showValidatedLinearWizard();
+		//showTestWizard();
 	}
 
 	public static void main(String[] args) {
