@@ -42,7 +42,7 @@ public class StockLineChartApp2 extends Application {
 		chart.setLegendSide(Side.TOP);
 		//chart.setLegendVisible(false);
 		chart.setTitle("动态数据");
-		//xAxis.setLabel("时间");
+		xAxis.setLabel("时间");
 		xAxis.setForceZeroInRange(false);
 		//刻度标
 		xAxis.setTickLabelsVisible(false);
@@ -74,6 +74,7 @@ public class StockLineChartApp2 extends Application {
 	private double minute = 0;
 	private double second = 0;
 	private double secInMin = 0;
+
 	private void nextTime() {
 		if (second == 59) {
 			minute++;
@@ -84,10 +85,10 @@ public class StockLineChartApp2 extends Application {
 
 		secInMin = minute + ((1d / 60d) * second);
 	}
-	
+
 	private void plotTime() {
 		long time = System.currentTimeMillis();
-		
+
 		double x = Math.random();
 
 		final ObservableList<Data<Number, Number>> list1 = series1.getData();
@@ -95,22 +96,27 @@ public class StockLineChartApp2 extends Application {
 
 		final ObservableList<Data<Number, Number>> list2 = series2.getData();
 		list2.add(new Data<Number, Number>(time, 200));
-		
+
 		final ObservableList<Data<Number, Number>> list3 = series3.getData();
 		list3.add(new Data<Number, Number>(time, 50 * x + 100));
-		
+
 		final ObservableList<Data<Number, Number>> list4 = series4.getData();
 		list4.add(new Data<Number, Number>(time, 180));
-		
+
 		final ObservableList<Data<Number, Number>> list5 = series5.getData();
 		list5.add(new Data<Number, Number>(time, 5 * x + 60));
 
-		if (secInMin > 1.1) {
-			list1.remove(0);
-			list2.remove(0);
-			list3.remove(0);
-			list4.remove(0);
-			list5.remove(0);
+		if (secInMin > 1.1) {//分钟数大于1.1
+			list1.iterator().remove();
+			list2.iterator().remove();
+			list3.iterator().remove();
+			list4.iterator().remove();
+			list5.iterator().remove();
+			//list1.remove(0);
+			//list2.remove(0);
+			//list3.remove(0);
+			//list4.remove(0);
+			//list5.remove(0);
 		}
 
 		// every hour after 24 move range 1 hour
